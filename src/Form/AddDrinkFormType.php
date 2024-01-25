@@ -18,6 +18,7 @@ class AddDrinkFormType extends AbstractType
         $builder
             ->add('name', TypeTextType::class,  [
                 'label' => 'Name',
+                
                 'attr' => [
                     'placeholder' => 'Name',
                 ],
