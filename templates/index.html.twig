@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} EnergyShop {% endblock %}
+
+{% block stylesheets %}
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+   <style>
+    img {
+        width: 100%;
+        height: 30vw;
+        /* ТУТ ВЫСОТУ УСТАНАВЛИВАЕМ */
+        object-fit: cover;
+    }
+</style>
+{% endblock %}
+
+ {% block header %}
+ 
+
+  <header class="p-3 text-bg-dark">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+            <use xlink:href="#bootstrap"></use>
+          </svg>
+        </a>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="index.php" class="nav-link px-2 text-secondary">Главная</a></li>
+          <!-- <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
+          <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li> -->
+          <li><a href={{path('adminPanel')}} class="nav-link px-2 text-white">Добавить товар</a></li>
+        </ul>
+
+        <!-- <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+          <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
+        </form>
+-->
+        <div class="text-end">
+          <form action="cart_index.php" method="POST">
+            <button type="submit" class="btn btn-warning">Корзина</button>
+            <!-- <button type="button" class="btn btn-warning">Sign-up</button> -->
+          </form>
+        </div>
+        <a href={{path('_logout_main')}} class="nav-link px-2 text-secondary">Выйти</a>
+      </div>
+    </div>
+  </header>
+{% endblock %}
+
+ {% block body %}
+ 
+     <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-3  justify-content-center">
+        {% for item in data %} 
+
+                     <div class=" col-md-5 mb-4">
+                        <div class="card p-2" style="width: 25rem;">
+                            
+                            <img src="{{ item.imageLink }}"class="card-img-top" alt="Product Image">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ item.name }} {{item.volume}} ml.</h5>
+                                    <p class="card-text">{{ item.description}}</p>
+                                    <p class="card-text">Price: $ {{item.price }}</p>
+                                    <div class="text-center"><button type="submit" class="btn btn-outline-dark mt-auto">BUY</button>
+                                    </div>
+                                 </div>
+                      </div>
+                    </div>
+        
+        {% endfor %}
+         </div>
+    </div>
+    
+ {% endblock %}
+
+{% block footer %}
+<div class="container">
+  <footer class="py-1 my-1">
+    <p class="text-center text-body-secondary">© 2024 Company, Inc</p>
+  </footer>
+</div>
+{% endblock %}
+

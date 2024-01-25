@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+   
+
+{% endblock %}
+{% block title %} AdminPanel {% endblock %}
+
+{% block body %}
+<header class="p-3 text-bg-dark">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href={{path('addDrink')}} class="nav-link px-8 text-white"> ADD</a>
+        <a href={{path('deleteDrink')}} class="nav-link px-2 text-white"> Delete</a>
+      </div>
+    </div>
+</header>
+{% endblock %}
+
